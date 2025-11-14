@@ -11,6 +11,7 @@ import net.minecraft.client.gui.components.ContainerObjectSelectionList;
 import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.client.gui.components.events.GuiEventListener;
 import net.minecraft.client.gui.narration.NarratableEntry;
+import net.minecraft.client.input.MouseButtonEvent;
 import net.minecraft.client.resources.language.I18n;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.HoverEvent;
@@ -158,7 +159,6 @@ public class OptionList extends ContainerObjectSelectionList<OptionList.Entry> {
         public List<? extends NarratableEntry> narratables() {
             return Collections.emptyList();
         }
-
     }
 
     class OptionEntry extends Entry {
@@ -209,6 +209,7 @@ public class OptionList extends ContainerObjectSelectionList<OptionList.Entry> {
             this.toggleButton.active = !(this.option.isModDefined() || this.option.isEffectivelyDisabledByParent() || isDynamicResources);
         }
 
+        //@Override
         public void render(GuiGraphics guiGraphics, int index, int top, int left, int width, int height, int mouseX, int mouseY, boolean isMouseOver, float partialTicks) {
             MutableComponent nameComponent = getOptionComponent(option);
             if(this.option.isUserDefined())
@@ -242,6 +243,23 @@ public class OptionList extends ContainerObjectSelectionList<OptionList.Entry> {
         @Override
         public List<? extends GuiEventListener> children() {
             return ImmutableList.of(this.toggleButton, this.helpButton);
+        }
+
+
+        public boolean mouseClicked(MouseButtonEvent mousebtevent, boolean doubleClick) {
+            for(GuiEventListener listener : children()) {
+                if(listener.mouseClicked(mousebtevent, doubleClick))
+                    return true;
+            }
+            return false;
+        }
+
+        public boolean mouseReleased(MouseButtonEvent mousebtevent) {
+            for(GuiEventListener listener : children()) {
+                if(listener.mouseReleased(mousebtevent))
+                    return true;
+            }
+            return false;
         }
 
         @Override

@@ -43,7 +43,7 @@ repositories {
 }
 
 dependencies {
-    neoForge "net.neoforged:neoforge:${rootProject.forge_version}"
+    neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
 
     // Remove the next line if you don't want to depend on the API
     // modApi "me.shedaniel:architectury-forge:${rootProject.architectury_version}"
@@ -51,7 +51,7 @@ dependencies {
     modCompileOnly("curse.maven:refinedstorage-243076:${refined_storage_version}")
 
     modCompileOnly("curse.maven:jeresources-240630:3951643")
-    modCompileOnly("me.shedaniel:RoughlyEnoughItems-neoforge:${rei_version}") { transitive false }
+    modCompileOnly("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}") { transitive false }
     modCompileOnly("dev.latvian.mods:kubejs-neoforge:${kubejs_version}") {
         transitive = false
     }

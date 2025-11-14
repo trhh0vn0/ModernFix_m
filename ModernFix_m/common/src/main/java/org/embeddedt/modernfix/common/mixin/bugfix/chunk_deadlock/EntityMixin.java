@@ -1,7 +1,13 @@
 package org.embeddedt.modernfix.common.mixin.bugfix.chunk_deadlock;
 
+import com.llamalad7.mixinextras.injector.v2.WrapWithCondition;
+import net.minecraft.core.Holder;
+import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.level.gameevent.GameEvent;
+import org.embeddedt.modernfix.ModernFix;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(Entity.class)
 public class EntityMixin {

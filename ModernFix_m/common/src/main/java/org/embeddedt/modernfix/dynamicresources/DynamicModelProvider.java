@@ -15,9 +15,9 @@ import net.minecraft.client.renderer.item.ClientItem;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.MissingItemModel;
 import net.minecraft.client.renderer.item.ModelRenderProperties;
+import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureAtlas;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.client.renderer.texture.MissingTextureAtlasSprite;
 import net.minecraft.client.resources.model.BlockModelRotation;
 import net.minecraft.client.resources.model.BlockStateDefinitions;
 import net.minecraft.client.resources.model.BlockStateModelLoader;
@@ -114,8 +114,7 @@ public class DynamicModelProvider {
                                 Map<ResourceLocation, TextureAtlas> atlasMap) {
         this.unbakedMissingModel = MissingBlockModel.missingModel();
         this.entityModelSet = entityModelSet;
-        var blocksAtlas = atlasMap.get(TextureAtlas.LOCATION_BLOCKS);
-        var missing = blocksAtlas.getSprite(MissingTextureAtlasSprite.getLocation());
+        var missing = atlasMap.get(TextureAtlas.LOCATION_BLOCKS).getSprite(MissingTextureAtlasSprite.getLocation());
         this.textureGetter = new SpriteGetter() {
             @Override
             public TextureAtlasSprite get(Material material, ModelDebugName modelDebugName) {

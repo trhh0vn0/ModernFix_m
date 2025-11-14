@@ -1,5 +1,6 @@
 package org.embeddedt.modernfix.neoforge.util;
 
+import net.neoforged.fml.loading.FMLLoader;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL;
 import org.lwjgl.opengl.GLCapabilities;
@@ -39,7 +40,7 @@ public class AsyncLoadingScreen extends Thread implements AutoCloseable {
         GL.setCapabilities(caps);
         while(keepRunning.get()) {
             LockSupport.parkNanos(TimeUnit.MILLISECONDS.toNanos(50));
-            //FMLLoader.progressWindowTick.run(); #1.21.10 rmv
+            //FMLLoader.progressWindowTick.run();
         }
         GLFW.glfwMakeContextCurrent(0);
     }

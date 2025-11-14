@@ -23,7 +23,7 @@ public class ErroredEntityRenderer<T extends Entity> extends EntityRenderer<T, E
         return null;
     }
 
-//    @Override
+    //@Override
     public void render(EntityRenderState entityRenderState, PoseStack poseStack, MultiBufferSource multiBufferSource, int i) {
     }
 }

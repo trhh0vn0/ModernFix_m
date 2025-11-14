@@ -37,11 +37,10 @@ public class ModelManagerMixinNeo {
     )
     private static ModelBakery.BakingResult useDynamicBakingResult(ModelBakery.BakingResult bakingResult) {
         var currentReloadingProvider = DynamicModelProvider.currentReloadingModelProvider.get();
-        if (ModLoader.hasErrors() || currentReloadingProvider == null) {
+        if(ModLoader.hasErrors() || currentReloadingProvider == null) {
             ModernFix.LOGGER.error("Errors encountered - not using dynamic model BakingResult");
             return bakingResult;
         }
-
         return new ModelBakeEventHelper(currentReloadingProvider).createDynamicResult();
     }
 
